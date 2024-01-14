@@ -1,19 +1,24 @@
 
-import './App.css'
-import Countries from './components/Countries'
-import Header from './components/Header'
-import Search from './components/Search'
+import { Outlet } from "react-router-dom";
+import "./App.css";
+// import Countries from "./components/Countries";
+import Country from "./components/Country";
+import Header from "./components/Header";
+import Search from "./components/Search";
 
 function App() {
-
-
   return (
     <>
-    <Header/>
-    <Search/>
-      <Countries/>
-    </>
-  )
+      <Header />
+      
+      
+        <Search />
+      
+        <Outlet/>
+      
+        </>
+    
+  );
 }
 
-export default App
+export default App;

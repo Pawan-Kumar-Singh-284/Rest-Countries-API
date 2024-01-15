@@ -20,9 +20,9 @@ function Countries() {
     <>
     <section className="grid">
     {countries.map((country)=>{
-        const {name, capital,flags,population,region }=country;
+        const {name, capital,flags,population,region,ccn3   }=country;
 
-        return <article>
+        return <article key={ccn3}>
             <div>
                 <img src={flags.svg} alt={name}/>
                 <div className="details">
@@ -30,7 +30,8 @@ function Countries() {
                 <h4>Population: <span>{population}</span></h4>
                 <h4>Region: <span>{ region}</span></h4>
                 <h4>Capital: <span>{capital}</span></h4>
-                <Link to={`/country`}>learn more</Link>
+                <Link to={`/countries/${name.common}`} className="btn">learn more</Link>
+                <button className="btn" onClick={()=>{console.log("hello")}}>Remove Country</button>
                 </div>
             </div>
         </article>

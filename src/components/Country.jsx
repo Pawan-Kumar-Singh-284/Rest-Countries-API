@@ -12,83 +12,85 @@ function Country() {
       `);
       const country = await res.json();
       setCountry(country);
-      console.log(country);
+    
     };
 
     fetchcountryData();
     setCountry(country);
-    console.log(country);
+    console.log(country)
   }, []);
 
   return (
     <>
-    <section className="country">
-      {country.map((c) => {
-        const {
-          name,
-          population,
-          capital,
-          region,
-          subregion,
-          currencies,
-          flags,
-          languages,
-          borders,
-        } = country[0];
-        return (
-          <article>
-            <div className="inner-details">
-            <div className="flag">
-              <img src={flags.svg} alt={flags.alt} />
-            </div>
-            <div className="country-details">
-              <div>
-                <h2>{name.common}</h2>
-                <h5>
-                  Native Name: <span>{name.common}</span>{" "}
-                </h5>
-                <h5>
-                  Population: <span>{population}</span>
-                </h5>
-                <h5>
-                  Region: <span>{region}</span>
-                </h5>
-                <h5>
-                  Sub Region: <span>{subregion}</span>
-                </h5>
-                <h5>
-                  Capital: <span>{capital}</span>
-                </h5>
+      <section className="country">
+        {country.map((c) => {
+          const {
+            name,
+            population,
+            capital,
+            region,
+            subregion,
+            currencies,
+            flags,
+            languages,
+            borders,
+          } = country[0];
+          return (
+            <article key={name.common}>
+              <div className="inner-details">
+                <div className="flag">
+                  <img src={flags.svg} alt={flags.alt} />
+                </div>
+                <div className="country-details">
+                  <div>
+                    <h2>{name.common}</h2>
+                    <h5>
+                      Native Name: <span>{name.common}</span>{" "}
+                    </h5>
+                    <h5>
+                      Population: <span>{population}</span>
+                    </h5>
+                    <h5>
+                      Region: <span>{region}</span>
+                    </h5>
+                    <h5>
+                      Sub Region: <span>{subregion}</span>
+                    </h5>
+                    <h5>
+                      Capital: <span>{capital}</span>
+                    </h5>
+                  </div>
+                  <div>
+                    <h5>Top Level Domain: </h5>
+                    <h5>
+                   
+                      Currencies: {Object.keys(currencies).map(key=><span>{key}</span>)} 
+                     
+                    </h5>
+                    <h5>
+                      Languages: {Object.keys(languages).map(key=><span>{languages[key]}</span>)}
+                    </h5>
+                  </div>
+                </div>
               </div>
               <div>
-                <h5>Top Level Domain: </h5>
-                <h5>
-                  Currencies: <span></span>
-                </h5>
-                <h5>
-                  Languages: <span></span>
-                </h5>
+                <h3>Border Countries: </h3>
+                <div className="border">
+                  {borders
+                    ? borders.map((border) => {
+                        return (
+                          <ul key={border}>
+                            <li>{border}</li>
+                          </ul>
+                        );
+                      })
+                    : undefined}
+                </div>
               </div>
-            </div>
-            </div>
-            <div>
-              <h3>Border Countries: </h3>
-              <div className="border">
-                {borders
-                  ? borders.map((border) => {
-                      return (
-                        <ul key={border}>
-                          <li>{border}</li>
-                        </ul>
-                      );
-                    })
-                  : undefined}
-              </div>
-            </div>
-          </article>
-        );
-      })}
-    </section>
+            </article>
+          );
+        })}
+      </section>
     </>
   );
 }

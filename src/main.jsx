@@ -5,13 +5,12 @@ import "./index.css";
 import App from "./App";
 import Country from "./components/Country.jsx";
 import Countries from "./components/Countries.jsx";
-import Search from "./components/Search.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element:<> <Search/> <Countries/> </>},
+      { path: "/", element: <Countries /> },
       { path: "/countries/:name", element: <Country /> },
     ],
   },
